@@ -339,8 +339,8 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.ios.layOutPortrait.setSloganLeft = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganRight = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganBottom =
-        dinsvUIConfig.ios.layOutPortrait.setLogBtnBottom! +
-            dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
+        dinsvUIConfig.ios.layOutPortrait.setLogBtnCenterY! +
+            2*dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
 
     //隐私协议
 //    dinsvUIConfig.ios.layOutPortrait.setPrivacyHeight = 50;
