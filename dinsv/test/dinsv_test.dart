@@ -1,6 +1,5 @@
 import 'package:flutter/services.dart';
 import 'package:flutter_test/flutter_test.dart';
-import 'package:dinsv/dinsv.dart';
 
 void main() {
   const MethodChannel channel = MethodChannel('dinsv');
@@ -16,5 +15,4 @@ void main() {
   tearDown(() {
     channel.setMockMethodCallHandler(null);
   });
-
 }

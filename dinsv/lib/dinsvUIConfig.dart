@@ -7,7 +7,6 @@ import 'package:json_annotation/json_annotation.dart';
 
 part 'dinsvUIConfig.g.dart';
 
-
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
 class DinsvUIConfig {
   DinsvUIConfigIOS _ios = new DinsvUIConfigIOS(); //iOS
@@ -23,13 +22,12 @@ class DinsvUIConfig {
   }
 
   DinsvUIConfigAndroid _androidPortrait =
-  new DinsvUIConfigAndroid(); //Android竖屏
+      new DinsvUIConfigAndroid(); //Android竖屏
   DinsvUIConfigAndroid _androidLandscape =
-  new DinsvUIConfigAndroid(); //Android横屏
+      new DinsvUIConfigAndroid(); //Android横屏
 
   // ignore: unnecessary_getters_setters,
-  set androidPortrait(DinsvUIConfigAndroid androidPortrait) =>
-      _androidPortrait;
+  set androidPortrait(DinsvUIConfigAndroid androidPortrait) => _androidPortrait;
 
   // ignore: unnecessary_getters_setters
   DinsvUIConfigAndroid get androidPortrait {
@@ -60,7 +58,6 @@ class DinsvUIConfig {
   //序列化
   Map<String, dynamic> toJson() => _$DinsvUIConfigToJson(this);
 }
-
 
 ///*iOS独有*/
 @JsonSerializable(explicitToJson: true, includeIfNull: false)
@@ -118,7 +115,6 @@ class DinsvUIConfigIOS {
   /// 自带返回(关闭)按钮位置 默认NO 居左,设置为YES居右显示
   bool? setNavBackBtnAlimentRight;
 
-
   /// 导航栏分割线 是否隐藏
   /// set backgroundImage=UIImage.new && shadowImage=UIImage.new
   /// BOOL, default is NO
@@ -128,17 +124,14 @@ class DinsvUIConfigIOS {
   /// 导航栏 渲染色*/
   String? setNavigationTintColor;
 
-
   /// 导航栏 背景色 default is white*/
   String? setNavigationBarTintColor;
-
 
   /// 导航栏 背景图片
   String? setNavigationBackgroundImage;
 
   /// /// 导航栏 导航栏底部分割线（图片）
   String? setNavigationShadowImage;
-
 
   ///LOGO图片
   String? setLogoImgPath;
@@ -148,7 +141,6 @@ class DinsvUIConfigIOS {
 
   /// LOGO显隐
   bool? setLogoHidden;
-
 
   //手机号显示控件
   String? setNumberColor;
@@ -162,7 +154,6 @@ class DinsvUIConfigIOS {
 
   /// 手机号对齐方式
   iOSTextAlignment? setNumberTextAlignment;
-
 
 //一键登录按钮 !不得隐藏
   /// 按钮文字
@@ -198,7 +189,6 @@ class DinsvUIConfigIOS {
   /// 按钮边框线框
   num? setLoginBtnBorderWidth;
 
-
 /*隐私条款Privacy
  注： 运营商隐私条款 不得隐藏
  用户条款不限制
@@ -208,12 +198,12 @@ class DinsvUIConfigIOS {
   ///设置隐私条款文字颜色，包含两个参数：1.基础文字颜色 2.协议文字颜色,eg. ["#FFD13D","#CAACE1"]
 
   /**隐私条款文字字体*/
+
   /// 设置隐私栏字体大小
   num? setPrivacyTextSize;
 
   /// 设置协议栏字体是否加粗
   bool? setPrivacyTextBold;
-
 
   /// 隐私条款文字对齐方式
   iOSTextAlignment? setAppPrivacyTextAlignment;
@@ -236,7 +226,6 @@ class DinsvUIConfigIOS {
   /// 隐私条款--APP名称简写 默认取CFBundledisplayname 设置描述文本四后此属性无效
   String? setAppPrivacyAbbreviatedName;
 
-
   /// 隐私条款一:需同时设置Name和UrlString
   List<String>? setAppPrivacyFirst;
 
@@ -246,10 +235,10 @@ class DinsvUIConfigIOS {
   /// 隐私条款三:需同时设置Name和UrlString
   List<String>? setAppPrivacyThird;
 
-
 /*
  隐私协议文本拼接: DesTextFirst+运营商条款+DesTextSecond+隐私条款一+DesTextThird+隐私条款二+DesTextFourth+隐私条款三+DesTextLast
  **/
+
   /// 描述文本 首部 default:"同意"
   String? setAppPrivacyNormalDesTextFirst;
 
@@ -274,7 +263,6 @@ class DinsvUIConfigIOS {
   /// 运营商协议后置
   bool? setOperatorPrivacyAtLast;
 
-
 //  String setPrivacyNavText;         /// 协议页导航栏统一标题，默认显示条款名称
   /// 协议页导航栏标题文字颜色
   String? setPrivacyNavTextColor;
@@ -285,13 +273,11 @@ class DinsvUIConfigIOS {
   /// 隐私协议WEB页面导航返回按钮图片
   String? setPrivacyNavReturnImgPath;
 
-
   /// 协议页状态栏样式
   iOSStatusBarStyle? setAppPrivacyWebPreferredStatusBarStyle;
 
   /// 协议页导航栏样式
   iOSBarStyle? setAppPrivacyWebNavigationBarStyle;
-
 
   ///协议页导航栏其他属性
   String? setAppPrivacyWebNavigationTintColor;
@@ -317,14 +303,12 @@ class DinsvUIConfigIOS {
 
   /// slogan是否隐藏
 
-
-
-
 /*CheckBox
  *协议勾选框，默认选中且在协议前显示
  *可在sdk_oauth.bundle中替换checkBox_unSelected、checkBox_selected图片
  *也可以通过属性设置选中和未选择图片
  **/
+
   /// 协议勾选框（默认显示,放置在协议之前）BOOL
   bool? setCheckBoxHidden;
 
@@ -349,7 +333,6 @@ class DinsvUIConfigIOS {
   /// 协议勾选框 选中状态图片
   String? setCheckedImgPath;
 
-
   /**授权页自定义 "请勾选协议"提示框
       - containerView为loading的全屏蒙版view
       - 请自行在containerView添加自定义提示
@@ -357,6 +340,7 @@ class DinsvUIConfigIOS {
 //  @property (nonatomic,copy)void(^checkBoxTipView)(UIView * containerView);
 
 /*Loading*/
+
   /// Loading 大小
   List<num>? setLoadingSize;
 
@@ -366,17 +350,14 @@ class DinsvUIConfigIOS {
   /// Loading 背景色
   String? setLoadingBackgroundColor;
 
-
   /**UIActivityIndicatorViewStyle eg.@(UIActivityIndicatorViewStyleWhiteLarge)*/
 //  @property (nonatomic,strong) NSNumber *clLoadingIndicatorStyle;
 
   /// Loading Indicator渲染色
   String? setLoadingTintColor;
 
-
   ///自定义控件
   List<DinsvCustomWidgetIOS>? widgets;
-
 
   /**授权页自定义Loading
       - containerView为loading的全屏蒙版view
@@ -395,7 +376,6 @@ class DinsvUIConfigIOS {
   /// 是否支持自动旋转
   bool? setShouldAutorotate;
 
-
 /*支持方向
  - 如果设置只支持竖屏，只需配置竖屏布局layOutPortrait
  - 如果设置只支持横屏，只需设置横屏布局layOutLandscape
@@ -406,7 +386,6 @@ class DinsvUIConfigIOS {
   /// 默认方向
   iOSInterfaceOrientation? preferredInterfaceOrientationForPresentation;
 
-
   /// 以窗口方式显示
   bool? setAuthTypeUseWindow;
 
@@ -415,7 +394,6 @@ class DinsvUIConfigIOS {
 
   /// 系统自带的弹出动画
   iOSModalTransitionStyle? setAuthWindowModalTransitionStyle;
-
 
 /* UIModalPresentationStyle
  * 若使用窗口模式，请设置为UIModalPresentationOverFullScreen 或不设置
@@ -431,7 +409,6 @@ class DinsvUIConfigIOS {
   /// 协议页弹出样式。当授权页使用窗口模式时，协议页强制使用模态弹出，此时此属性有效
   iOSModalPresentationStyle? setAppPrivacyWebModalPresentationStyle;
 
-
 /* UIUserInterfaceStyle
  * UIUserInterfaceStyleUnspecified - 不指定样式，跟随系统设置进行展示
  * UIUserInterfaceStyleLight       - 明亮
@@ -442,7 +419,6 @@ class DinsvUIConfigIOS {
 
   /// 授权页面present弹出时animate动画设置，默认带动画
   bool? setAuthWindowPresentingAnimate;
-
 
   /**弹窗的MaskLayer，用于自定义窗口形状*/
 //  @property (nonatomic,strong) CALayer * clAuthWindowMaskLayer;
@@ -456,7 +432,8 @@ class DinsvUIConfigIOS {
   /// 竖屏下使用的布局(不需要则不设置)
 
   // ignore: unnecessary_getters_setters,
-  set layOutPortrait(DinsvOrientationLayOutIOS layOutPortrait) => _layOutPortrait;
+  set layOutPortrait(DinsvOrientationLayOutIOS layOutPortrait) =>
+      _layOutPortrait;
 
   // ignore: unnecessary_getters_setters
   DinsvOrientationLayOutIOS get layOutPortrait {
@@ -542,7 +519,6 @@ class DinsvOrientationLayOutIOS {
   num? setSloganBottom;
   num? setSloganCenterX;
   num? setSloganCenterY;
-
 
   num? setAuthWindowOrientationCenterX;
   num? setAuthWindowOrientationCenterY;
@@ -643,7 +619,7 @@ class DinsvUIConfigAndroid {
   bool? setCheckBoxHidden; //设置隐私条款的CheckBox是否隐藏（true：隐藏；false：不隐藏）
   List<int>? setCheckBoxWH; //设置checkbox的宽高，包含两个参数：1.宽 2.高
   List<int>?
-  setCheckBoxOffsetXY; //设置checkbox在协议框父控件中的位置，包含两个参数：1.左偏移量 2.上偏移量（默认：在父控件内居中）
+      setCheckBoxOffsetXY; //设置checkbox在协议框父控件中的位置，包含两个参数：1.左偏移量 2.上偏移量（默认：在父控件内居中）
   List<int>? setCheckBoxMargin; //设置checkbox的间距，包含四个参数：1.左间距 2.上间距 3.右间距 4.下间距
   List<String>? setPrivacyText; //设置隐私条款名称外的文字,包含五个参数
   bool? setPrivacyTextBold; //设置协议栏字体是否加粗（true：加粗；false：不加粗）
@@ -660,7 +636,6 @@ class DinsvUIConfigAndroid {
   bool? setSloganHidden = false; //设置slogan是否隐藏（true：隐藏；false：不隐藏）
   bool? setSloganTextBold; //设置slogan文字字体是否加粗（true：加粗；false：不加粗）
 
-
   //协议页导航栏
   String? setPrivacyNavColor; //设置协议页导航栏背景颜色
   bool? setPrivacyNavTextBold; //设置协议页导航栏标题文字是否加粗（true：加粗；false：不加粗）
@@ -676,9 +651,9 @@ class DinsvUIConfigAndroid {
 
   String? setLoadingView; //设置授权页点击一键登录自定义loading
   List<String>?
-  setDialogTheme; //设置授权页为弹窗样式，包含5个参数：1.弹窗宽度 2.弹窗高度 3.弹窗X偏移量（以屏幕中心为原点） 4.弹窗Y偏移量（以屏幕中心为原点） 5.授权页弹窗是否贴于屏幕底部
+      setDialogTheme; //设置授权页为弹窗样式，包含5个参数：1.弹窗宽度 2.弹窗高度 3.弹窗X偏移量（以屏幕中心为原点） 4.弹窗Y偏移量（以屏幕中心为原点） 5.授权页弹窗是否贴于屏幕底部
   List<String>?
-  setActivityTranslateAnim; //设置授权页进出场动画，包含两个参数：1.进场动画传xml文件名即可  2.退场动画传xml文件名即可
+      setActivityTranslateAnim; //设置授权页进出场动画，包含两个参数：1.进场动画传xml文件名即可  2.退场动画传xml文件名即可
   List<DinsvCustomWidgetLayout>? widgetLayouts;
   List<DinsvCustomWidget>? widgets;
 
@@ -787,7 +762,7 @@ class DinsvCustomWidgetIOS {
       iOSTextAlignment.center; //自定义控件内容对齐方式 (Only Android available)
   DinsvCustomWidgetType? type; //自定义控件类型，目前只支持 textView,button,ImageView
   DinsvCustomWidgetiOSNavPosition?
-  navPosition; //如需添加到导航栏，请设置控件位置（左或右，导航栏按钮仅支持自定义width、height）
+      navPosition; //如需添加到导航栏，请设置控件位置（左或右，导航栏按钮仅支持自定义width、height）
   bool isFinish = true; //点击自定义控件是否自动销毁授权页
 
   DinsvCustomWidgetIOS(@required this.widgetId, @required this.type) {
@@ -816,82 +791,82 @@ String? getStringFromEnum<T>(T) {
 
 ///iOS 文字对齐方式
 enum iOSTextAlignment {
-@JsonValue(0)
-center, // Visually centered 居中
-@JsonValue(1)
-left, // Visually left aligned 居左
-@JsonValue(2)
-right, // Visually right aligned 居右
+  @JsonValue(0)
+  center, // Visually centered 居中
+  @JsonValue(1)
+  left, // Visually left aligned 居左
+  @JsonValue(2)
+  right, // Visually right aligned 居右
 
 /* !TARGET_ABI_USES_IOS_VALUES */
 // Visually right aligned
 // Visually centered
-@JsonValue(3)
-justified, // Fully-justified. The last line in a paragraph is natural-aligned. 自动
+  @JsonValue(3)
+  justified, // Fully-justified. The last line in a paragraph is natural-aligned. 自动
 
-@JsonValue(4)
-natural, // Indicates the default alignment for script 自然段落
+  @JsonValue(4)
+  natural, // Indicates the default alignment for script 自然段落
 }
 
 /// iOS 状态栏样式
 /// Xcode工程内的Info.plist文件配置需设置为YES，即运行单个页面自行管理状态栏: View controller-based status bar appearance = YES
 enum iOSStatusBarStyle {
-@JsonValue(0)
-styleDefault, // 状态栏显示 黑
-@JsonValue(1)
-styleLightContent, // 状态栏显示 白
-@JsonValue(2)
-styleDarkContent // 状态栏显示 黑 API_AVAILABLE(ios(13.0)) = 3
+  @JsonValue(0)
+  styleDefault, // 状态栏显示 黑
+  @JsonValue(1)
+  styleLightContent, // 状态栏显示 白
+  @JsonValue(2)
+  styleDarkContent // 状态栏显示 黑 API_AVAILABLE(ios(13.0)) = 3
 }
 
 /// iOS 导航栏样式，也可用于修改状态栏样式
 enum iOSBarStyle {
-@JsonValue(0)
-styleDefault, // 状态栏显示 黑
-@JsonValue(1)
-styleBlack // 状态栏显示 白
+  @JsonValue(0)
+  styleDefault, // 状态栏显示 黑
+  @JsonValue(1)
+  styleBlack // 状态栏显示 白
 }
 
 /// iOS 支持的横竖屏方向
 enum iOSInterfaceOrientationMask {
-@JsonValue(0)
-portrait, //竖屏
-@JsonValue(1)
-landscapeLeft, //横屏：左
-@JsonValue(2)
-landscapeRight, //横屏：右
-@JsonValue(3)
-portraitUpsideDown, //上下倒置
-@JsonValue(4)
-landscape, //横屏：左+右
-@JsonValue(5)
-all, //全部方向
-@JsonValue(6)
-allButUpsideDown //全部方向，除了上下倒置
+  @JsonValue(0)
+  portrait, //竖屏
+  @JsonValue(1)
+  landscapeLeft, //横屏：左
+  @JsonValue(2)
+  landscapeRight, //横屏：右
+  @JsonValue(3)
+  portraitUpsideDown, //上下倒置
+  @JsonValue(4)
+  landscape, //横屏：左+右
+  @JsonValue(5)
+  all, //全部方向
+  @JsonValue(6)
+  allButUpsideDown //全部方向，除了上下倒置
 }
 
 /// iOS 屏幕方向
 enum iOSInterfaceOrientation {
-@JsonValue(0)
-portrait, //竖屏
-@JsonValue(1)
-portraitUpsideDown, //上下倒置
-@JsonValue(2)
-landscapeLeft, //横屏：左
-@JsonValue(3)
-landscapeRight, //横屏：右
-@JsonValue(4)
-unknown,
+  @JsonValue(0)
+  portrait, //竖屏
+  @JsonValue(1)
+  portraitUpsideDown, //上下倒置
+  @JsonValue(2)
+  landscapeLeft, //横屏：左
+  @JsonValue(3)
+  landscapeRight, //横屏：右
+  @JsonValue(4)
+  unknown,
 }
 
 /// iOS 系统自带的弹出方式
 enum iOSModalTransitionStyle {
-@JsonValue(0)
-coverVertical, // 底部弹出
-@JsonValue(1)
-flipHorizontal, // 淡入
-@JsonValue(2)
-crossDissolve // 翻转显示
+  @JsonValue(0)
+  coverVertical, // 底部弹出
+  @JsonValue(1)
+  flipHorizontal, // 淡入
+  @JsonValue(2)
+  crossDissolve // 翻转显示
 }
 
 /* UIModalPresentationStyle
@@ -904,20 +879,20 @@ crossDissolve // 翻转显示
 
 /// iOS 系统的弹出样式
 enum iOSModalPresentationStyle {
-@JsonValue(0)
-fullScreen, // 弹出全屏
-@JsonValue(1)
-overFullScreen, // 在原页面弹出，可透视原页面
-@JsonValue(2)
-automatic // 自动
+  @JsonValue(0)
+  fullScreen, // 弹出全屏
+  @JsonValue(1)
+  overFullScreen, // 在原页面弹出，可透视原页面
+  @JsonValue(2)
+  automatic // 自动
 }
 
 /// iOS 主题模式
 enum iOSUserInterfaceStyle {
-@JsonValue(0)
-unspecified, //跟随系统
-@JsonValue(1)
-light, //亮
-@JsonValue(2)
-dark //暗黑 API_AVAILABLE(ios(13.0))
+  @JsonValue(0)
+  unspecified, //跟随系统
+  @JsonValue(1)
+  light, //亮
+  @JsonValue(2)
+  dark //暗黑 API_AVAILABLE(ios(13.0))
 }

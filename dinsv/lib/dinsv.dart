@@ -1,14 +1,10 @@
-
 import 'dart:async';
 import 'dart:io';
 
 import 'package:flutter/services.dart';
 
-
 import 'dinsvResult.dart';
-import 'dinsvUIConfig.dart';
-
-import 'package:flutter/services.dart';
+import 'dinsvUIConfigdart';
 
 /// DinsvSDK 授权页回调（一键登录点击/sdk自带返回）
 typedef DinsvOneKeyLoginListener = void Function(DinsvResult dinsvResult);
@@ -23,7 +19,6 @@ class DinsvManager {
   static const MethodChannel _channel = MethodChannel('dinsv');
 
   final DinsvEventHandlers _eventHanders = new DinsvEventHandlers();
-
 
   DinsvUIConfig dinsvUIConfig = new DinsvUIConfig();
 
@@ -98,13 +93,13 @@ class DinsvManager {
   Future<DinsvResult> openLoginAuth() async {
     if (Platform.isAndroid) {
       Map<dynamic, dynamic> result =
-      await _channel.invokeMethod("openLoginAuth");
+          await _channel.invokeMethod("openLoginAuth");
       Map<String, dynamic> newResult = new Map<String, dynamic>.from(result);
       return DinsvResult.fromJson(newResult);
     } else if (Platform.isIOS) {
       Map iosConfigure = this.dinsvUIConfig.ios.toJson();
       Map<dynamic, dynamic> result =
-      await _channel.invokeMethod("openLoginAuth", iosConfigure);
+          await _channel.invokeMethod("openLoginAuth", iosConfigure);
       Map<String, dynamic> newResult = new Map<String, dynamic>.from(result);
       return DinsvResult.fromJson(newResult);
     } else {
@@ -149,7 +144,7 @@ class DinsvManager {
   ///DinsvSDK 本机号校验获取token (Android+iOS)
   Future<DinsvResult> startAuthentication() async {
     Map<dynamic, dynamic> result =
-    await _channel.invokeMethod("startAuthentication");
+        await _channel.invokeMethod("startAuthentication");
     Map<String, dynamic> newResult = new Map<String, dynamic>.from(result);
     return DinsvResult.fromJson(newResult);
   }
@@ -176,7 +171,7 @@ class DinsvManager {
     switch (call.method) {
       case 'onReceiveAuthPageEvent':
         Map<String, dynamic> newResult =
-        new Map<String, dynamic>.from(call.arguments);
+            new Map<String, dynamic>.from(call.arguments);
         DinsvResult result = DinsvResult.fromJson(newResult);
         _eventHanders.oneKeyLoginListener?.call(result);
         break;

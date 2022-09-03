@@ -1,20 +1,17 @@
-import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
-import 'package:fluttertoast/fluttertoast.dart';
 import 'dart:async';
-
-import 'package:dinsv/dinsv.dart';
-import 'package:dinsv/dinsvUIConfig.dart';
-import 'package:dinsv/dinsvResult.dart';
-
-import 'package:flutter/cupertino.dart';
-
+import 'dart:io';
 // import 'package:modal_progress_hud/modal_progress_hud.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
 import 'dart:ui';
-import 'dart:io';
-import 'dart:convert' as convert;
+
+import 'package:dinsv/dinsv.dart';
+import 'package:dinsv/dinsvResult.dart';
+import 'package:dinsv/dinsvUIConfig.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
+import 'package:fluttertoast/fluttertoast.dart';
 
 void main() => runApp(new MyApp());
 
@@ -72,7 +69,7 @@ class _MyAppState extends State<MyApp> {
     if (Platform.isIOS) {
       appId = "7I5nJT7h";
     } else if (Platform.isAndroid) {
-      appId = "loXN4jDs";
+      appId = "9c1562612a1b";
     }
     //DinsvSDK 初始化
     oneKeyLoginManager.init(appId: appId).then((dinsvResult) {
@@ -193,7 +190,7 @@ class _MyAppState extends State<MyApp> {
 
     /*iOS 页面样式设置*/
     dinsvUIConfig.ios.isFinish = true;
-    dinsvUIConfig.ios.setAuthBGImgPath = "sy_login_test_bg";
+    dinsvUIConfig.ios.setAuthBGImgPath = "demo_drawable_login_bg";
     dinsvUIConfig.ios.setAuthBGVedioPath = "login_demo_test_vedio";
 
     dinsvUIConfig.ios.setPreferredStatusBarStyle =
@@ -281,7 +278,6 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.ios.setSloganTextColor = "#CEBFFF";
     dinsvUIConfig.ios.setSloganTextAlignment = iOSTextAlignment.center;
 
-
     dinsvUIConfig.ios.setCheckBoxHidden = false;
     dinsvUIConfig.ios.setPrivacyState = false;
 //    dinsvUIConfig.ios.setCheckBoxVerticalAlignmentToAppPrivacyTop = true;
@@ -333,14 +329,13 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.ios.layOutPortrait.setLogBtnWidth =
         screenWidthPortrait * 0.67;
 
-
     //授权页 slogan（***提供认证服务）
     dinsvUIConfig.ios.layOutPortrait.setSloganHeight = 15;
     dinsvUIConfig.ios.layOutPortrait.setSloganLeft = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganRight = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganBottom =
         dinsvUIConfig.ios.layOutPortrait.setLogBtnCenterY! +
-            2*dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
+            2 * dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
 
     //隐私协议
 //    dinsvUIConfig.ios.layOutPortrait.setPrivacyHeight = 50;
@@ -355,7 +350,7 @@ class _MyAppState extends State<MyApp> {
 
     final String btn_widgetId = "other_custom_button"; // 标识控件 id
     DinsvCustomWidgetIOS buttonWidgetiOS =
-    DinsvCustomWidgetIOS(btn_widgetId, DinsvCustomWidgetType.Button);
+        DinsvCustomWidgetIOS(btn_widgetId, DinsvCustomWidgetType.Button);
     buttonWidgetiOS.textContent = "其他方式登录 >1";
     buttonWidgetiOS.centerY = 100;
     buttonWidgetiOS.centerX = 0;
@@ -391,12 +386,12 @@ class _MyAppState extends State<MyApp> {
 
     /*Android 页面样式具体设置*/
     dinsvUIConfig.androidPortrait.isFinish = true;
-    dinsvUIConfig.androidPortrait.setLogoImgPath = "sy_logo";
+    dinsvUIConfig.androidPortrait.setLogoImgPath = "demo_drawable_logo";
     dinsvUIConfig.androidPortrait.setPrivacyNavColor = "#aa00cc";
     dinsvUIConfig.androidPortrait.setPrivacyNavTextColor = "#00aacc";
     dinsvUIConfig.androidPortrait.setCheckBoxOffsetXY = [10, 5];
     List<DinsvCustomWidgetLayout> dinsvCustomWidgetLayout = [];
-    String layout_name = "relative_item_view";
+    String layout_name = "demo_layout_relative_item_view";
     DinsvCustomWidgetLayout relativeLayoutWidget = DinsvCustomWidgetLayout(
         layout_name, DinsvCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidget.top = 380;
@@ -404,7 +399,7 @@ class _MyAppState extends State<MyApp> {
     dinsvCustomWidgetLayout.add(relativeLayoutWidget);
     List<DinsvCustomWidget> dinsvCustomWidgetAndroid = [];
     DinsvCustomWidget buttonWidgetAndroid =
-    DinsvCustomWidget(btn_widgetId, DinsvCustomWidgetType.Button);
+        DinsvCustomWidget(btn_widgetId, DinsvCustomWidgetType.Button);
     buttonWidgetAndroid.textContent = "其他方式登录 >";
     buttonWidgetAndroid.top = 300;
     buttonWidgetAndroid.width = 150;
@@ -419,8 +414,8 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.androidPortrait.widgets = dinsvCustomWidgetAndroid;
 
     dinsvUIConfig.androidPortrait.setActivityTranslateAnim = [
-      "activity_anim_bottom_in",
-      "activity_anim_bottom_out"
+      "demo_amin_activity_bottom_in",
+      "demo_amin_activity_bottom_out"
     ];
     //oneKeyLoginManager.setAuthThemeConfig(uiConfig: dinsvUIConfig);
     oneKeyLoginManager.addClikWidgetEventListener((eventId) {
@@ -434,8 +429,8 @@ class _MyAppState extends State<MyApp> {
     });
 
     dinsvUIConfig.androidLandscape.isFinish = true;
-    dinsvUIConfig.androidLandscape.setAuthBGImgPath = "sy_login_test_bg";
-    dinsvUIConfig.androidLandscape.setLogoImgPath = "sy_logo";
+    dinsvUIConfig.androidLandscape.setAuthBGImgPath = "demo_drawable_login_bg";
+    dinsvUIConfig.androidLandscape.setLogoImgPath = "demo_drawable_logo";
     dinsvUIConfig.androidLandscape.setAuthNavHidden = true;
     dinsvUIConfig.androidLandscape.setLogoOffsetY = 14;
     dinsvUIConfig.androidLandscape.setNumFieldOffsetY = 65;
@@ -443,16 +438,14 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.androidLandscape.setLogBtnOffsetY = 120;
 
     List<DinsvCustomWidgetLayout> dinsvCustomWidgetLayoutLand = [];
-    String layout_name_land = "relative_item_view";
-    DinsvCustomWidgetLayout relativeLayoutWidgetLand =
-    DinsvCustomWidgetLayout(
+    String layout_name_land = "demo_layout_relative_item_view";
+    DinsvCustomWidgetLayout relativeLayoutWidgetLand = DinsvCustomWidgetLayout(
         layout_name_land, DinsvCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidgetLand.top = 200;
     relativeLayoutWidgetLand.widgetLayoutId = ["weixin", "qq", "weibo"];
     dinsvCustomWidgetLayoutLand.add(relativeLayoutWidgetLand);
 
-    dinsvUIConfig.androidLandscape.widgetLayouts =
-        dinsvCustomWidgetLayoutLand;
+    dinsvUIConfig.androidLandscape.widgetLayouts = dinsvCustomWidgetLayoutLand;
     oneKeyLoginManager.setAuthThemeConfig(uiConfig: dinsvUIConfig);
 
     setState(() {
@@ -470,7 +463,7 @@ class _MyAppState extends State<MyApp> {
 
     /*iOS 页面样式设置*/
     dinsvUIConfig.ios.isFinish = false;
-    dinsvUIConfig.ios.setAuthBGImgPath = "sy_login_test_bg";
+    dinsvUIConfig.ios.setAuthBGImgPath = "demo_drawable_login_bg";
     dinsvUIConfig.ios.setAuthBGVedioPath = "login_demo_test_vedio";
 
     dinsvUIConfig.ios.setPreferredStatusBarStyle =
@@ -558,7 +551,6 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.ios.setSloganTextColor = "#CEBFFF";
     dinsvUIConfig.ios.setSloganTextAlignment = iOSTextAlignment.center;
 
-
     dinsvUIConfig.ios.setCheckBoxHidden = false;
     dinsvUIConfig.ios.setPrivacyState = false;
 //    dinsvUIConfig.ios.setCheckBoxVerticalAlignmentToAppPrivacyTop = true;
@@ -618,14 +610,13 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight = 40;
     dinsvUIConfig.ios.layOutPortrait.setLogBtnWidth = 200;
 
-
     //授权页 slogan（***提供认证服务）
     dinsvUIConfig.ios.layOutPortrait.setSloganHeight = 15;
     dinsvUIConfig.ios.layOutPortrait.setSloganLeft = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganRight = 0;
     dinsvUIConfig.ios.layOutPortrait.setSloganBottom =
-        dinsvUIConfig.ios.layOutPortrait.setLogBtnBottom! +
-            dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
+        dinsvUIConfig.ios.layOutPortrait.setLogBtnTop! +
+            2 * dinsvUIConfig.ios.layOutPortrait.setLogBtnHeight!;
 
     //隐私协议
 //    dinsvUIConfig.ios.layOutPortrait.setPrivacyHeight = 50;
@@ -639,7 +630,7 @@ class _MyAppState extends State<MyApp> {
 
     final String btn_widgetId = "other_custom_button"; // 标识控件 id
     DinsvCustomWidgetIOS buttonWidgetiOS =
-    DinsvCustomWidgetIOS(btn_widgetId, DinsvCustomWidgetType.Button);
+        DinsvCustomWidgetIOS(btn_widgetId, DinsvCustomWidgetType.Button);
     buttonWidgetiOS.textContent = "其他方式登录 >";
     buttonWidgetiOS.top = 140 + 20 + 10;
     buttonWidgetiOS.centerX = 0;
@@ -673,7 +664,7 @@ class _MyAppState extends State<MyApp> {
 
     /*Android 页面样式具体设置*/
     dinsvUIConfig.androidPortrait.isFinish = true;
-    dinsvUIConfig.androidPortrait.setLogoImgPath = "sy_logo";
+    dinsvUIConfig.androidPortrait.setLogoImgPath = "demo_drawable_logo";
     dinsvUIConfig.androidPortrait.setDialogTheme = [
       "300",
       "500",
@@ -686,9 +677,19 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.androidPortrait.setNumFieldOffsetY = 85;
     dinsvUIConfig.androidPortrait.setSloganOffsetY = 110;
     dinsvUIConfig.androidPortrait.setLogBtnOffsetY = 130;
-    dinsvUIConfig.androidPortrait.setAuthBGImgPath="sysdk_login_bg";
+    dinsvUIConfig.androidPortrait.setLogoHeight = 40;
+    dinsvUIConfig.androidPortrait.setLogoWidth = 40;
+    dinsvUIConfig.androidPortrait.setPrivacyOffsetX = 15;
+    dinsvUIConfig.androidPortrait.setCheckBoxOffsetXY = [0, 5];
+    dinsvUIConfig.androidPortrait.setCheckBoxMargin = [10, 0, 5, 0];
+    dinsvUIConfig.androidPortrait.setCheckedImgPath =
+        "demo_drawable_checked_icon";
+    dinsvUIConfig.androidPortrait.setUncheckedImgPath =
+        "demo_drawable_unchecked_icon";
+    dinsvUIConfig.androidPortrait.setAuthBGImgPath =
+        "demo_drawable_login_corners_bg";
     List<DinsvCustomWidgetLayout> dinsvCustomWidgetLayout = [];
-    String layout_name = "relative_item_view";
+    String layout_name = "demo_layout_relative_item_view";
     DinsvCustomWidgetLayout relativeLayoutWidget = DinsvCustomWidgetLayout(
         layout_name, DinsvCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidget.top = 270;
@@ -696,7 +697,7 @@ class _MyAppState extends State<MyApp> {
     dinsvCustomWidgetLayout.add(relativeLayoutWidget);
     List<DinsvCustomWidget> dinsvCustomWidgetAndroid = [];
     DinsvCustomWidget buttonWidgetAndroid =
-    DinsvCustomWidget(btn_widgetId, DinsvCustomWidgetType.Button);
+        DinsvCustomWidget(btn_widgetId, DinsvCustomWidgetType.Button);
     buttonWidgetAndroid.textContent = "其他方式登录 >";
     buttonWidgetAndroid.top = 200;
     buttonWidgetAndroid.width = 150;
@@ -718,7 +719,7 @@ class _MyAppState extends State<MyApp> {
       "0",
       "false"
     ];
-    dinsvUIConfig.androidLandscape.setLogoImgPath = "sy_logo";
+    dinsvUIConfig.androidLandscape.setLogoImgPath = "demo_drawable_logo";
     dinsvUIConfig.androidLandscape.setAuthNavHidden = true;
     dinsvUIConfig.androidLandscape.setLogoOffsetY = 14;
     dinsvUIConfig.androidLandscape.setNumFieldOffsetY = 65;
@@ -726,16 +727,14 @@ class _MyAppState extends State<MyApp> {
     dinsvUIConfig.androidLandscape.setLogBtnOffsetY = 120;
 
     List<DinsvCustomWidgetLayout> dinsvCustomWidgetLayoutLand = [];
-    String layout_name_land = "relative_item_view";
-    DinsvCustomWidgetLayout relativeLayoutWidgetLand =
-    DinsvCustomWidgetLayout(
+    String layout_name_land = "demo_layout_relative_item_view";
+    DinsvCustomWidgetLayout relativeLayoutWidgetLand = DinsvCustomWidgetLayout(
         layout_name_land, DinsvCustomWidgetLayoutType.RelativeLayout);
     relativeLayoutWidgetLand.top = 200;
     relativeLayoutWidgetLand.widgetLayoutId = ["weixin", "qq", "weibo"];
     dinsvCustomWidgetLayoutLand.add(relativeLayoutWidgetLand);
 
-    dinsvUIConfig.androidLandscape.widgetLayouts =
-        dinsvCustomWidgetLayoutLand;
+    dinsvUIConfig.androidLandscape.widgetLayouts = dinsvCustomWidgetLayoutLand;
     oneKeyLoginManager.setAuthThemeConfig(uiConfig: dinsvUIConfig);
 
     oneKeyLoginManager.addClikWidgetEventListener((eventId) {
@@ -812,8 +811,6 @@ class _MyAppState extends State<MyApp> {
                   child: SizedBox(
                     child: new CustomButton(
                       onPressed: () {
-
-                        _toast("DinsvSDK 拉起授权页");
                         openLoginAuthPlatformState();
                       },
                       title: "DinsvSDK 拉起授权页",

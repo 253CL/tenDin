@@ -1,4 +1,4 @@
-package com.example.dinsv_example;
+package com.tencent.dinsv_example;
 
 import io.flutter.embedding.android.FlutterActivity;
 

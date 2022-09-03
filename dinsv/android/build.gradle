@@ -1,4 +1,4 @@
-group 'com.example.dinsv'
+group 'com.tencent.dinsv'
 version '1.0'
 
 buildscript {
@@ -22,7 +22,7 @@ rootProject.allprojects {
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 30
+    compileSdkVersion 31
 
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
@@ -32,4 +32,7 @@ android {
     defaultConfig {
         minSdkVersion 16
     }
+}
+dependencies {
+    api files('libs/tendinsv _sdk_v2.3.2.7.jar')
 }
