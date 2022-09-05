@@ -182,6 +182,24 @@ class _MyAppState extends State<MyApp> {
     });
   }
 
+  Future<void> captchaWithTYParam() async {
+    //DinsvSDK 图文验证
+    Map param = new Map();
+    // 注意配置appid
+    param["appId"] = "";
+    Map bizData = new Map();
+    bizData["width"] = 275;
+    bizData["height"] = 275;
+    oneKeyLoginManager.captchaWithTYParam(param: param).then((DinsvResult) {
+      setState(() {
+        _code = DinsvResult.code ?? 0;
+        _result = DinsvResult.message ?? "";
+        _content = DinsvResult.toJson().toString();
+      });
+
+    });
+  }
+
   void setAuthThemeConfig() {
     double screenWidthPortrait =
         window.physicalSize.width / window.devicePixelRatio; //竖屏宽
@@ -854,6 +872,18 @@ class _MyAppState extends State<MyApp> {
                         startAuthenticationState();
                       },
                       title: "本机认证 获取token",
+                    ),
+                    width: double.infinity,
+                  ),
+                  margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
+                ),
+                new Container(
+                  child: SizedBox(
+                    child: new CustomButton(
+                      onPressed: () {
+                        captchaWithTYParam();
+                      },
+                      title: "图文验证",
                     ),
                     width: double.infinity,
                   ),

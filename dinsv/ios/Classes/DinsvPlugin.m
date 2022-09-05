@@ -54,6 +54,8 @@
       [self setCheckBoxValue:call];
   } else if ([@"clearScripCache" isEqualToString:call.method]){
       [self clearScripCache];
+  } else if ([@"captchaWithTYParam" isEqualToString:call.method]){
+      [self captchaWithTYParam:call.arguments complete:result];
   } else {
     result(FlutterMethodNotImplemented);
   }
@@ -155,6 +157,26 @@
              [strongSelf.channel invokeMethod:@"onReceiveAuthPageEvent" arguments:[DinsvPlugin completeResultToJson:completeResult]];
          }
      }];
+}
+
+- (void)captchaWithTYParam:(NSDictionary *)param complete:(FlutterResult)complete{
+    NSDictionary * argv = param;
+    if ((argv == nil || ![argv isKindOfClass:[NSDictionary class]]) && [param.allKeys containsObject:@"appId"] && [param.allKeys containsObject:@"bizData"] && (param[@"bizData"] == nil || ![param[@"bizData"] isKindOfClass:[NSDictionary class]])) {
+        if (complete) {
+            NSMutableDictionary * result = [NSMutableDictionary new];
+            result[@"code"] = @(1001);
+            result[@"message"] = @"请设置参数";
+            complete(result);
+        }
+        return;
+    }
+    NSString * appId = argv[@"appId"];
+    NSDictionary * bizData = argv[@"bizData"];
+    [TenDINsvSDKManager tenDINsvCaptchaWithTYAppId:appId bizStateData:bizData complete:^(TenDINsvCompleteResult * _Nonnull completeResult) {
+        if (complete) {
+            complete([DinsvPlugin completeResultToJson:completeResult]);
+        }
+    }];
 }
 
 +(NSString * )dictToJson:(NSDictionary *)input{

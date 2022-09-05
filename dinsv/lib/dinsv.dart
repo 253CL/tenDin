@@ -4,7 +4,7 @@ import 'dart:io';
 import 'package:flutter/services.dart';
 
 import 'dinsvResult.dart';
-import 'dinsvUIConfigdart';
+import 'dinsvUIConfig.dart';
 
 /// DinsvSDK 授权页回调（一键登录点击/sdk自带返回）
 typedef DinsvOneKeyLoginListener = void Function(DinsvResult dinsvResult);
@@ -152,6 +152,14 @@ class DinsvManager {
   /// 清除预取号缓存
   void clearScripCache() {
     _channel.invokeMethod("clearScripCache");
+  }
+
+
+  ///DinsvSDK 图文验证(Android+iOS)
+  Future<DinsvResult> captchaWithTYParam({required Map param}) async {
+    Map result = await _channel.invokeMethod("captchaWithTYParam", param);
+    Map<String, dynamic> newResult = new Map<String, dynamic>.from(result);
+    return DinsvResult.fromJson(newResult);
   }
 
   ///DinsvSDK 配置授权页 Android
