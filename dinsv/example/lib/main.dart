@@ -1,5 +1,6 @@
 import 'dart:async';
 import 'dart:io';
+
 // import 'package:modal_progress_hud/modal_progress_hud.dart';
 // import 'package:fluttertoast/fluttertoast.dart';
 
@@ -186,17 +187,17 @@ class _MyAppState extends State<MyApp> {
     //DinsvSDK 图文验证
     Map param = new Map();
     // 注意配置appid
-    param["appId"] = "";
+    param["appId"] = "123";
     Map bizData = new Map();
     bizData["width"] = 275;
     bizData["height"] = 275;
+    param["bizData"] = bizData;
     oneKeyLoginManager.captchaWithTYParam(param: param).then((DinsvResult) {
       setState(() {
         _code = DinsvResult.code ?? 0;
         _result = DinsvResult.message ?? "";
         _content = DinsvResult.toJson().toString();
       });
-
     });
   }
 

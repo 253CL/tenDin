@@ -13,7 +13,6 @@ import android.widget.CheckBox;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
-import com.tencent.dinsv.R;
 import com.tencent.tendinsv.OneKeyLoginManager;
 import com.tencent.tendinsv.listener.ActionListener;
 import com.tencent.tendinsv.listener.AuthenticationExecuteListener;
@@ -22,6 +21,7 @@ import com.tencent.tendinsv.listener.InitListener;
 import com.tencent.tendinsv.listener.OneKeyLoginListener;
 import com.tencent.tendinsv.listener.OpenLoginAuthListener;
 import com.tencent.tendinsv.listener.TenDINsvCustomInterface;
+import com.tencent.tendinsv.listener.TencentCaptchaLitener;
 import com.tencent.tendinsv.tool.TenDINsvUIConfig;
 
 import org.json.JSONException;
@@ -47,7 +47,7 @@ import io.flutter.plugin.common.MethodChannel.Result;
 public class DinsvPlugin implements FlutterPlugin, MethodCallHandler {
 
     // 定义日志 TAG
-    private static final String TAG = "|ProcessNSVLogger_flutter======|";
+    private static final String TAG = "|ProcessNSVLogger_|";
     final String shanyan_code = "code";//返回码
     final String shanyan_message = "message";//描述
     String shanyan_innerCode = "innerCode"; //内层返回码
@@ -140,6 +140,24 @@ public class DinsvPlugin implements FlutterPlugin, MethodCallHandler {
         if (call.method.equals("removeAllListener")) {
             OneKeyLoginManager.getInstance().removeAllListener();
         }
+        if (call.method.equals("captchaWithTYParam")) {
+            captchaWithTYParam(call, result);
+        }
+    }
+
+    private void captchaWithTYParam(MethodCall call, Result result) {
+        String appId = call.argument("appId");
+        HashMap bizData = call.argument("bizData");
+        OneKeyLoginManager.getInstance().startCaptcha(context, appId, bizData == null ? "" : bizData.toString(), new TencentCaptchaLitener() {
+            @Override
+            public void getCaptchaCallBacks(int i, String s) {
+                Map<String, Object> map = new HashMap<>();
+                map.put(shanyan_code, i);
+                map.put(shanyan_message, s);
+                Log.e(TAG, "map=" + map);
+                result.success(map);
+            }
+        });
     }
 
     private void getPrivacyCheckBox(MethodCall call, Result result) {
@@ -175,7 +193,7 @@ public class DinsvPlugin implements FlutterPlugin, MethodCallHandler {
                 map.put(shanyan_type, i);
                 map.put(shanyan_code, i1);
                 map.put(shanyan_message, s);
-                Log.e("logger", "map=" + map.toString());
+                Log.e(TAG, "map=" + map.toString());
                 channel.invokeMethod("onReceiveAuthEvent", map);
             }
         });
