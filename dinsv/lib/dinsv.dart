@@ -22,7 +22,7 @@ class DinsvManager {
 
   DinsvUIConfig dinsvUIConfig = new DinsvUIConfig();
 
-  OneKeyLoginManager() {
+  DinsvManager() {
     _channel.setMethodCallHandler(_handlerMethod);
   }
 

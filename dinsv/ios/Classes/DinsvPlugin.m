@@ -30,6 +30,8 @@
       methodChannelWithName:@"dinsv"
             binaryMessenger:[registrar messenger]];
   DinsvPlugin* instance = [[DinsvPlugin alloc] init];
+  instance.channel = channel;
+  instance.registrar = registrar;
   [registrar addMethodCallDelegate:instance channel:channel];
 }
 
