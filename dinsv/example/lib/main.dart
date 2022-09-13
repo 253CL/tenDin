@@ -838,22 +838,22 @@ class _MyAppState extends State<MyApp> {
                   ),
                   margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
                 ),
-                new Container(
-                  child: TextField(
-                    keyboardType: TextInputType.number,
-                    autofocus: false,
-                    style: TextStyle(color: Colors.black),
-                    decoration: InputDecoration(
-                        hintText: "请输入手机号码",
-                        hintStyle: TextStyle(color: Colors.black)),
-                    controller: controllerPHone,
-                    inputFormatters: <TextInputFormatter>[
-                      FilteringTextInputFormatter.digitsOnly, //只输入数字
-                      LengthLimitingTextInputFormatter(11) //限制长度
-                    ],
-                  ),
-                  margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
-                ),
+                // new Container(
+                //   child: TextField(
+                //     keyboardType: TextInputType.number,
+                //     autofocus: false,
+                //     style: TextStyle(color: Colors.black),
+                //     decoration: InputDecoration(
+                //         hintText: "请输入手机号码",
+                //         hintStyle: TextStyle(color: Colors.black)),
+                //     controller: controllerPHone,
+                //     inputFormatters: <TextInputFormatter>[
+                //       FilteringTextInputFormatter.digitsOnly, //只输入数字
+                //       LengthLimitingTextInputFormatter(11) //限制长度
+                //     ],
+                //   ),
+                //   margin: EdgeInsets.fromLTRB(40, 5, 40, 5),
+                // ),
                 new Container(
                   child: SizedBox(
                     child: new CustomButton(
